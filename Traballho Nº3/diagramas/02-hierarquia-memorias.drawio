@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Hierarquia de Memórias" id="hierarquia">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Classificação das Memórias — Hierarquia" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1069" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Mais próximo da CPU → mais rápido, menor, mais caro      |      Mais distante → mais lento, maior, mais barato" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="75" width="1069" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="axis_speed" value="↑&#xa;V&#xa;E&#xa;L&#xa;O&#xa;C&#xa;I&#xa;D&#xa;A&#xa;D&#xa;E" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#6c8ebf;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="40" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="axis_cap" value="↑&#xa;C&#xa;A&#xa;P&#xa;A&#xa;C&#xa;I&#xa;D&#xa;A&#xa;D&#xa;E" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;fontColor=#666666;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="180" width="40" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_regs" value="&lt;b style='font-size:14px'&gt;REGISTRADORES&lt;/b&gt;&lt;br&gt;~1 ciclo • dezenas de palavras • gerenciados pelo compilador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="400" y="180" width="370" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_l1" value="&lt;b style='font-size:13px'&gt;CACHE L1&lt;/b&gt;&lt;br&gt;1–4 ciclos • dezenas de KB • por núcleo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="360" y="260" width="450" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_l2" value="&lt;b style='font-size:13px'&gt;CACHE L2&lt;/b&gt;&lt;br&gt;10–20 ciclos • centenas de KB • por núcleo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="320" y="330" width="530" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_l3" value="&lt;b style='font-size:13px'&gt;CACHE L3&lt;/b&gt;&lt;br&gt;30–60 ciclos • dezenas de MB • compartilhado entre núcleos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="280" y="400" width="610" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_ram" value="&lt;b style='font-size:15px'&gt;MEMÓRIA RAM (DRAM)&lt;/b&gt;&lt;br&gt;100–300 ciclos • GB de capacidade • volátil • gerenciada pelo kernel&lt;br&gt;Conjunto de trabalho ativo dos processos vive aqui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="220" y="475" width="730" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_ssd" value="&lt;b style='font-size:13px'&gt;SSD / NVMe&lt;/b&gt;&lt;br&gt;~μs (10⁵ ciclos) • centenas de GB • não-volátil • sistemas de arquivos e swap" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="170" y="585" width="830" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lvl_hdd" value="&lt;b style='font-size:13px'&gt;DISCO HD (mecânico)&lt;/b&gt;&lt;br&gt;~ms (10⁷ ciclos) • TB de capacidade • não-volátil • backup/storage" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="150" y="670" width="870" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_internal" value="&lt;b&gt;ARMAZENAMENTO INTERNO&lt;/b&gt;&lt;br&gt;dentro do pacote do processador&lt;br&gt;controle por hardware/compilador" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;dashed=1;fontSize=11;align=center;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="170" y="160" width="40" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_internal_label" value="ARMAZENAMENTO INTERNO" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#6c8ebf;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="100" y="280" width="180" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_main_label" value="MEMÓRIA PRINCIPAL" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#6c8ebf;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="130" y="500" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="grp_sec_label" value="ARMAZENAMENTO SECUNDÁRIO" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#666666;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="85" y="650" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="swap_label" value="&lt;b&gt;↕ SWAP&lt;/b&gt;&lt;br&gt;estende RAM além do tamanho físico&lt;br&gt;páginas anônimas selecionadas saem da RAM e vão para o disco" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="780" width="850" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_ram_swap" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="lvl_ram" target="swap_label">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="metrics" value="&lt;b&gt;ESCALA DE TEMPO RELATIVA&lt;/b&gt;&lt;br&gt;Se um ciclo de CPU = 1 segundo,&lt;br&gt;então:&lt;br&gt;&lt;br&gt;• Cache L1 = ~3 segundos&lt;br&gt;• RAM = ~3 minutos&lt;br&gt;• SSD = ~3 dias&lt;br&gt;• HD = ~3 meses&lt;br&gt;&lt;br&gt;Daí a importância da hierarquia: cada nível absorve o golpe&lt;br&gt;antes do próximo." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="160" y="900" width="400" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="management" value="&lt;b&gt;QUEM GERENCIA CADA NÍVEL&lt;/b&gt;&lt;br&gt;&lt;br&gt;Registradores → &lt;b&gt;Compilador&lt;/b&gt; (alocação de registradores)&lt;br&gt;&lt;br&gt;Caches L1–L3 → &lt;b&gt;Hardware&lt;/b&gt; (transparente ao SO)&lt;br&gt;&lt;br&gt;RAM → &lt;b&gt;Kernel&lt;/b&gt; (paginação, alocação)&lt;br&gt;&lt;br&gt;Disco/SSD → &lt;b&gt;Kernel + Filesystem&lt;/b&gt;&lt;br&gt;&lt;br&gt;Swap → &lt;b&gt;Kernel&lt;/b&gt; (substituição de página)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="900" width="410" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Seção 2: Classificação das Memórias" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1180" width="1069" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

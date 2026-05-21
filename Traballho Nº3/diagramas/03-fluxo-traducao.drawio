@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Fluxo de Tradução" id="fluxo">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Fluxo de Tradução de Endereço Virtual → Físico" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1069" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="O que acontece quando um processo acessa um dado em memória?" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="75" width="1069" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="&lt;b&gt;1. Processo emite endereço virtual&lt;/b&gt;&lt;br&gt;ex.: mov rax, [0x7ffe1234]" style="rounded=20;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="430" y="120" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="&lt;b&gt;2. CPU executa a instrução&lt;/b&gt;&lt;br&gt;repassa o endereço virtual à MMU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="430" y="210" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="&lt;b&gt;3. MMU consulta a TLB&lt;/b&gt;&lt;br&gt;cache associativa pequena (64–2048 entradas)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="380" y="300" width="410" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="tlb_hit" value="TLB HIT" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="190" y="340" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="tlb_miss" value="TLB MISS" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="890" y="340" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="&lt;b&gt;4. Page Walk&lt;/b&gt;&lt;br&gt;MMU varre tabela hierárquica em RAM&lt;br&gt;(PGD → PUD → PMD → PTE)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="430" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="&lt;b&gt;5. PTE válida?&lt;/b&gt;&lt;br&gt;P=1, permissões OK?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="550" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="sim" value="SIM" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="730" y="600" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="nao" value="NÃO" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="940" y="660" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="s7" value="&lt;b&gt;7. PAGE FAULT&lt;/b&gt;&lt;br&gt;MMU dispara exceção; controle vai ao kernel" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="820" y="690" width="280" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="s8" value="&lt;b&gt;8. Kernel trata a falha&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;align=center;verticalAlign=middle;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="780" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fault_minor" value="&lt;b&gt;MINOR&lt;/b&gt;&lt;br&gt;página existe, só alocar&lt;br&gt;(zero-page, demand paging)&lt;br&gt;&lt;i&gt;custo: ~μs&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="830" width="135" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fault_major" value="&lt;b&gt;MAJOR&lt;/b&gt;&lt;br&gt;trazer de disco&lt;br&gt;(swap-in, mmap arquivo)&lt;br&gt;&lt;i&gt;custo: ~ms&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="965" y="830" width="135" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="fault_invalid" value="&lt;b&gt;INVÁLIDA&lt;/b&gt;&lt;br&gt;acesso fora do permitido&lt;br&gt;&lt;b style='color:#b85450'&gt;SIGSEGV → kill&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="820" y="930" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s9" value="&lt;b&gt;9. PTE atualizada + TLB invalidada&lt;/b&gt;&lt;br&gt;instrução refeita" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center;verticalAlign=middle;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="1010" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="&lt;b&gt;6. Endereço físico montado&lt;/b&gt;&lt;br&gt;frame_no × tamanho_pg + offset" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="430" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s10" value="&lt;b&gt;10. Acesso à memória física (RAM)&lt;/b&gt;&lt;br&gt;controlador de memória entrega o dado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1100" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s11" value="&lt;b&gt;11. Dado retornado à CPU&lt;/b&gt;&lt;br&gt;processo continua normalmente" style="rounded=20;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="430" y="1190" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="s1" target="s2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="s2" target="s3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_hit" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3" target="s6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3_miss" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3" target="s4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a4" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="s4" target="s5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5_sim" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s5" target="s6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a5_nao" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#b85450;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s5" target="s7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a7" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#d79b00;" edge="1" parent="1" source="s7" target="s8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8_minor" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#d79b00;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s8" target="fault_minor">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8_major" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#d79b00;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="s8" target="fault_major">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a8_invalid" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#b85450;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fault_minor" target="fault_invalid">
+          <mxGeometry relative="1" as="geometry" />
+          <Array as="points"><mxPoint x="960" y="930" /></Array>
+        </mxCell>
+        <mxCell id="a_minor_resolve" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#d79b00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fault_minor" target="s9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_major_resolve" style="endArrow=classic;html=1;strokeWidth=1;strokeColor=#d79b00;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="fault_major" target="s9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9_retry" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#d79b00;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s9" target="s6">
+          <mxGeometry relative="1" as="geometry" />
+          <Array as="points"><mxPoint x="240" y="1040" /></Array>
+        </mxCell>
+        <mxCell id="a9_label" value="repete instrução" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1020" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="a6" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s6" target="s10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a10" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="s10" target="s11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cost_table" value="&lt;b&gt;CUSTO RELATIVO&lt;/b&gt;&lt;br&gt;TLB hit: ~1 ciclo&lt;br&gt;TLB miss + walk: dezenas–centenas de ciclos&lt;br&gt;Minor fault: ~μs&lt;br&gt;Major fault (SSD): ~100 μs – 1 ms&lt;br&gt;Major fault (HD): ~10 ms&lt;br&gt;&lt;br&gt;1 major fault custa o equivalente a executar &lt;b&gt;milhões&lt;/b&gt; de instruções." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="690" width="320" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_bits" value="&lt;b&gt;BITS DA PTE QUE A MMU CHECA&lt;/b&gt;&lt;br&gt;P — Present (página em RAM?)&lt;br&gt;R/W — escrita permitida?&lt;br&gt;U/S — modo usuário pode acessar?&lt;br&gt;A — accessed (substituição)&lt;br&gt;D — dirty (precisa salvar em swap)&lt;br&gt;NX — proibido executar (anti-exploit)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="910" width="320" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 2: Fluxo de Tradução de Endereço" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1300" width="1069" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

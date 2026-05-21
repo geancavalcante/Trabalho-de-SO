@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Diagrama Macro" id="macro">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Diagrama Macro da Arquitetura da Memória" style="text;html=1;align=center;verticalAlign=middle;fontSize=26;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Hardware → CPU → MMU/TLB → Kernel → Gerência de Memória do SO → Processos → Ferramentas de Observação" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hw_label" value="MODO KERNEL / HARDWARE" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+          <mxGeometry x="77" y="120" width="1500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="hw" value="&lt;b style='font-size:14px'&gt;1. Hardware&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; substrato físico (RAM, barramentos, controladores, discos)&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; endereços físicos e sinais de controle&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; dados lidos / sinais de erro&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; capacidade finita, latência por nível, falhas de HW corrompem dados" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="150" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="cpu" value="&lt;b style='font-size:14px'&gt;2. CPU&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; executa instruções; gera endereços virtuais&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; instruções e operandos da memória&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; endereços virtuais p/ MMU; resultados de computação&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; cache miss e page fault paralisam execução" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="360" y="150" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="mmu" value="&lt;b style='font-size:14px'&gt;3. MMU / TLB&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; traduz endereço virtual → físico em hardware; aplica permissões&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; endereço virtual da CPU&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; endereço físico OU page fault&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; TLB miss → page walk; tradução errada quebra isolamento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="150" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="kernel" value="&lt;b style='font-size:14px'&gt;4. Kernel&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; mantém tabelas de páginas; trata faults; aloca/libera memória; faz swap&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; interrupções, exceções, syscalls&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; atualizações de PTE, swap I/O, sinais&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; bugs derrubam o sistema; decisões erradas → thrashing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="880" y="150" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="vm" value="&lt;b style='font-size:14px'&gt;5. Gerência VM (SO)&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; demand paging, page cache, zonas, swap, slab/buddy&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; requisições de página, pressão, params /proc/sys/vm&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; páginas alocadas/liberadas; métricas&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; thrashing, ativação do OOM killer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="150" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="separator" value="" style="endArrow=none;dashed=1;html=1;dashPattern=8 8;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="430" as="sourcePoint" />
+            <mxPoint x="1554" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep_label" value="── fronteira modo kernel ↑ / modo usuário ↓ ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="418" width="654" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="user_label" value="MODO USUÁRIO / USERSPACE" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#888888;" vertex="1" parent="1">
+          <mxGeometry x="77" y="460" width="1500" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="proc" value="&lt;b style='font-size:14px'&gt;6. Processos / Aplicações&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; executar programas usando o espaço virtual provido pelo kernel&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; espaço de endereçamento virtual; permissões por região&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; instruções executadas; syscalls; chamadas a libs&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; crescimento sem controle; SIGSEGV em acessos fora do permitido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="380" y="490" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="obs" value="&lt;b style='font-size:14px'&gt;7. Ferramentas de Observação&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Função:&lt;/b&gt; expor estado da memória para diagnóstico&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrada:&lt;/b&gt; /proc/meminfo, /proc/&lt;pid&gt;/maps, /proc/&lt;pid&gt;/smaps, contadores do kernel&lt;br&gt;&lt;br&gt;&lt;b&gt;Saída:&lt;/b&gt; métricas (RSS, PSS, swap, paginação/s)&lt;br&gt;&lt;br&gt;&lt;b&gt;Risco:&lt;/b&gt; leitura errada das métricas → diagnóstico equivocado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingRight=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="490" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_hw_cpu" style="endArrow=classic;html=1;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="hw" target="cpu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_cpu_mmu" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#9673a6;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="cpu" target="mmu">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_mmu_kernel" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#d79b00;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="mmu" target="kernel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_kernel_vm" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#d79b00;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kernel" target="vm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_proc_vm" style="endArrow=classic;html=1;strokeWidth=2;strokeColor=#82b366;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc" target="vm">
+          <mxGeometry relative="1" as="geometry" />
+          <mxArray as="points"><mxPoint x="520" y="450" /><mxPoint x="1250" y="450" /></mxArray>
+        </mxCell>
+        <mxCell id="arr_proc_vm_label" value="syscalls" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="600" y="430" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_obs_all" style="endArrow=open;html=1;strokeWidth=1;strokeColor=#666666;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="obs" target="kernel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arr_obs_label" value="observa" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="980" y="450" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="780" width="1454" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" value="Legenda — Padrão Visual do System Design" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="790" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_blue" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="830" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_blue_t" value="Azul — Hardware / CPU" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="830" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_purple" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="120" y="860" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_purple_t" value="Roxo — MMU / TLB / tradução" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="860" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_orange" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="120" y="890" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_orange_t" value="Laranja — Kernel / subsistema de memória" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="160" y="890" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_green" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="500" y="830" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_green_t" value="Verde — Processo / userspace" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="830" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_red" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="500" y="860" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_red_t" value="Vermelho — Proteção / falha / fragmentação" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="860" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_gray" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="500" y="890" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_gray_t" value="Cinza — Armazenamento secundário / swap" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="540" y="890" width="280" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="leg_questions" value="&lt;b&gt;Perguntas-chave respondidas neste diagrama:&lt;/b&gt;&lt;br&gt;• Quem acessa memória? &lt;b&gt;CPU e processos&lt;/b&gt;&lt;br&gt;• Quem traduz endereço? &lt;b&gt;MMU (com TLB)&lt;/b&gt;&lt;br&gt;• Quem protege? &lt;b&gt;MMU + Kernel&lt;/b&gt;&lt;br&gt;• Quem aloca? &lt;b&gt;Kernel / Gerência VM&lt;/b&gt;&lt;br&gt;• Quem monitora? &lt;b&gt;Ferramentas Linux&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;fontSize=11;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="820" width="640" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 1: Diagrama Macro" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1080" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
