@@ -1,0 +1,118 @@
+{
+  "tema": "System Design da Memória em Sistemas Operacionais",
+  "fontes": [
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "Page Tables - The Linux Kernel documentation",
+      "link": "https://docs.kernel.org/mm/page_tables.html",
+      "uso_recomendado": [
+        "MMU e tradução de endereços",
+        "tabelas de páginas hierárquicas",
+        "page fault",
+        "TLB",
+        "huge pages"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "proc_pid_maps(5) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man5/proc_pid_maps.5.html",
+      "uso_recomendado": [
+        "/proc/<pid>/maps",
+        "espaço de memória de um processo",
+        "permissões r/w/x",
+        "heap, stack, vdso, anon mappings"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "proc_pid_smaps(5) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man5/proc_pid_smaps.5.html",
+      "uso_recomendado": [
+        "/proc/<pid>/smaps",
+        "RSS, PSS, swap por mapeamento",
+        "análise detalhada de consumo de memória"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "proc(5) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man5/proc.5.html",
+      "uso_recomendado": [
+        "visão geral do /proc",
+        "arquivos do sistema para observabilidade",
+        "monitoramento no Linux"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "vmstat(8) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man8/vmstat.8.html",
+      "uso_recomendado": [
+        "memória, paginação, CPU, I/O",
+        "diagnóstico de desempenho",
+        "monitoramento do subsistema VM"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "free(1) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man1/free.1.html",
+      "uso_recomendado": [
+        "uso de RAM, cache e swap",
+        "comparação entre memória disponível e usada"
+      ]
+    },
+    {
+      "tipo": "documentacao_oficial",
+      "titulo": "top(1) - Linux manual page",
+      "link": "https://man7.org/linux/man-pages/man1/top.1.html",
+      "uso_recomendado": [
+        "processos consumindo memória",
+        "visão em tempo real"
+      ]
+    },
+    {
+      "tipo": "artigo_academico",
+      "titulo": "What Do You Mean by Memory? When Engineers Are Lost in the Maze of Complexity",
+      "link": "https://dl.acm.org/doi/pdf/10.1145/3639477.3639735",
+      "uso_recomendado": [
+        "trade-offs de gerenciamento de memória",
+        "complexidade moderna do tema",
+        "contexto para análise crítica"
+      ]
+    },
+    {
+      "tipo": "artigo_academico",
+      "titulo": "eBPF-mm: Userspace-guided memory management in Linux with eBPF",
+      "link": "https://arxiv.org/html/2409.11220v1",
+      "uso_recomendado": [
+        "gerenciamento de memória no Linux",
+        "políticas de memória",
+        "tendências modernas"
+      ]
+    },
+    {
+      "tipo": "artigo_academico",
+      "titulo": "Skip TLB flushes for reused pages within mmap's",
+      "link": "https://arxiv.org/pdf/2409.10946.pdf",
+      "uso_recomendado": [
+        "TLB",
+        "mmap",
+        "page cache",
+        "desempenho de memória"
+      ]
+    },
+    {
+      "tipo": "artigo_academico",
+      "titulo": "Non-volatile main memory management methods based on a file system",
+      "link": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4162891/",
+      "uso_recomendado": [
+        "métodos de alocação",
+        "swap",
+        "gerenciamento de memória principal e secundária"
+      ]
+    }
+  ],
+  "observacao": "Se a Claude Code precisar montar o trabalho com base teórica sólida, as fontes mais importantes são as da documentação do Linux Kernel e do man7, porque elas sustentam as partes práticas sobre MMU, page tables, /proc/<pid>/maps, /proc/<pid>/smaps e vmstat."
+}

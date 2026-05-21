@@ -1,0 +1,40 @@
+# Credenciais e configurações sensíveis
+gitconfug.json
+gitconfig.json
+*.token
+*.key
+.env
+.env.*
+!.env.example
+
+# Arquivos do sistema operacional
+Thumbs.db
+Desktop.ini
+.DS_Store
+$RECYCLE.BIN/
+
+# Editores e IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code (estado local)
+.claude/
+
+# Obsidian (metadados locais do vault)
+.obsidian/workspace*.json
+.obsidian/cache
+
+# Arquivos temporários do Office / PDF
+~$*
+*.tmp
+*.bak
+
+# Backups do draw.io
+*.drawio.bkp
+
+# Pasta de build/export do trabalho
+/export/
+/build/
