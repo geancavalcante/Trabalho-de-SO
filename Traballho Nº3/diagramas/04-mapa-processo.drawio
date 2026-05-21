@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Mapa do Processo" id="processo">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Mapa do Espaço de Memória de um Processo (Linux x86-64)" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="30" width="1069" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="O processo enxerga memória de forma virtual e contígua. O kernel mapeia para frames físicos arbitrários." style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="75" width="1069" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="addr_high" value="0xFFFFFFFFFFFFFFFF" style="text;html=1;align=right;verticalAlign=middle;fontSize=11;fontFamily=Courier New;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="125" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="kernel_area" value="&lt;b style='font-size:14px'&gt;ESPAÇO DO KERNEL&lt;/b&gt;&lt;br&gt;&lt;br&gt;mapeado em todos os processos&lt;br&gt;acessível somente em modo privilegiado (ring 0)&lt;br&gt;&lt;br&gt;evita troca de tabela em cada syscall" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="510" y="150" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="frontier" value="" style="endArrow=none;dashed=1;html=1;dashPattern=12 8;strokeColor=#b85450;strokeWidth=3;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510" y="285" as="sourcePoint" />
+            <mxPoint x="830" y="285" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="frontier_label" value="── fronteira modo kernel ↑ / modo usuário ↓ ──" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="510" y="290" width="320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="addr_user_top" value="0x00007FFFFFFFFFFF" style="text;html=1;align=right;verticalAlign=middle;fontSize=11;fontFamily=Courier New;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="320" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="stack" value="&lt;b style='font-size:13px'&gt;STACK (pilha)&lt;/b&gt;&lt;br&gt;quadros de chamada, variáveis locais, endereços de retorno&lt;br&gt;&lt;b&gt;↓ ↓ ↓ cresce para endereços baixos&lt;/b&gt;&lt;br&gt;permissão: rw-p&lt;br&gt;limite: ulimit -s (default 8 MB)&lt;br&gt;&lt;b style='color:#b85450'&gt;risco:&lt;/b&gt; stack overflow → SIGSEGV" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="350" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mmap" value="&lt;b style='font-size:13px'&gt;REGIÕES MAPEADAS (mmap)&lt;/b&gt;&lt;br&gt;bibliotecas .so (libc, libpthread...)&lt;br&gt;arquivos mapeados, buffers grandes&lt;br&gt;permissão por mapeamento (r-x para código, rw para dados)&lt;br&gt;&lt;b style='color:#b85450'&gt;risco:&lt;/b&gt; permissões erradas geram faults" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="490" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="heap" value="&lt;b style='font-size:13px'&gt;HEAP&lt;/b&gt;&lt;br&gt;alocação dinâmica (malloc, new, brk/sbrk)&lt;br&gt;&lt;b&gt;↑ ↑ ↑ cresce para endereços altos&lt;/b&gt;&lt;br&gt;permissão: rw-p&lt;br&gt;&lt;b style='color:#b85450'&gt;risco:&lt;/b&gt; memory leak → RSS cresce sem limite" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="630" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="bss" value="&lt;b style='font-size:13px'&gt;BSS (não inicializados)&lt;/b&gt;&lt;br&gt;globais e estáticos zerados pelo kernel&lt;br&gt;não ocupa espaço no ELF (só tamanho)&lt;br&gt;permissão: rw-p" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="770" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="data" value="&lt;b style='font-size:13px'&gt;DATA (inicializados)&lt;/b&gt;&lt;br&gt;globais e estáticos com valor inicial&lt;br&gt;carregados do executável ELF&lt;br&gt;permissão: rw-p" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="870" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="text" value="&lt;b style='font-size:13px'&gt;TEXT / CÓDIGO (.text)&lt;/b&gt;&lt;br&gt;instruções de máquina do programa&lt;br&gt;permissão: r-xp (read-only + executable)&lt;br&gt;page cache: compartilhado entre processos do mesmo binário&lt;br&gt;&lt;b style='color:#b85450'&gt;risco:&lt;/b&gt; escrita aqui = SIGSEGV (W=0)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="970" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="addr_text" value="0x0000000000400000" style="text;html=1;align=right;verticalAlign=middle;fontSize=11;fontFamily=Courier New;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1100" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="null_page" value="&lt;b style='font-size:13px'&gt;PÁGINA NULL (não-mapeada)&lt;/b&gt;&lt;br&gt;protege contra dereferência de ponteiro NULL&lt;br&gt;&lt;b style='color:#b85450'&gt;qualquer acesso aqui = SIGSEGV imediato&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="510" y="1130" width="320" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="addr_zero" value="0x0000000000000000" style="text;html=1;align=right;verticalAlign=middle;fontSize=11;fontFamily=Courier New;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="1220" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="stack_arrow" value="↓" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="395" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heap_arrow" value="↑" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="680" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="obs_panel" value="&lt;b style='font-size:13px'&gt;Como observar isso no Linux&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;cat /proc/&lt;pid&gt;/maps&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;regiões mapeadas + permissões&lt;br&gt;&lt;br&gt;&lt;b&gt;cat /proc/&lt;pid&gt;/smaps&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;idem + Size, RSS, PSS, Swap&lt;br&gt;&amp;nbsp;&amp;nbsp;por mapeamento&lt;br&gt;&lt;br&gt;&lt;b&gt;pmap &lt;pid&gt;&lt;/b&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;versão amigável do maps&lt;br&gt;&lt;br&gt;Exemplo de linha de /proc/&lt;pid&gt;/maps:&lt;br&gt;&lt;span style='font-family:Courier New;font-size:9px'&gt;00400000-00452000 r-xp 00000000 fd:00 12345 /usr/bin/cat&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="350" width="280" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="key_panel" value="&lt;b style='font-size:13px'&gt;PRINCÍPIO CENTRAL&lt;/b&gt;&lt;br&gt;&lt;br&gt;Processo enxerga &lt;b&gt;memória virtual&lt;/b&gt; contígua e privada.&lt;br&gt;&lt;br&gt;Hardware usa &lt;b&gt;frames físicos&lt;/b&gt; espalhados em RAM.&lt;br&gt;&lt;br&gt;Ponte: &lt;b&gt;MMU&lt;/b&gt; consulta a tabela de páginas para traduzir.&lt;br&gt;&lt;br&gt;Cada processo tem sua tabela. Mesmo endereço virtual em processos diferentes = frames físicos diferentes.&lt;br&gt;&lt;br&gt;&lt;b&gt;Isolamento garantido em hardware.&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="860" y="750" width="280" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="addr_label" value="ENDEREÇO VIRTUAL" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="300" y="100" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="permissions" value="&lt;b&gt;PERMISSÕES POR REGIÃO&lt;/b&gt;&lt;br&gt;r — leitura | w — escrita&lt;br&gt;x — execução | p — privada (COW)&lt;br&gt;s — compartilhada" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=left;verticalAlign=top;spacingLeft=8;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1130" width="380" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 3: Mapa do Espaço de Memória de um Processo" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="1280" width="1069" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

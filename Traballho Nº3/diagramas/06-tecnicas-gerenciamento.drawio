@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Técnicas de Gerenciamento" id="tecnicas">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Quadro Comparativo — Técnicas de Gerenciamento de Memória" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Cada técnica resolveu o problema da anterior — e introduziu outro" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="h_tec" value="TÉCNICA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h_def" value="DEFINIÇÃO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="280" y="120" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h_prob" value="PROBLEMA QUE RESOLVE" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="540" y="120" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h_van" value="VANTAGEM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#82b366;strokeColor=#558848;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="780" y="120" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h_des" value="DESVANTAGEM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3a36;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="120" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="h_lim" value="LIMITAÇÃO PRÁTICA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="120" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_t" value="&lt;b&gt;1. Alocação contígua&lt;/b&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 50)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="160" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_def" value="Cada processo ocupa um único bloco contíguo de RAM. Proteção via registradores base + limite." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="160" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_prob" value="Simplicidade de implementação em sistemas mono-programados." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="160" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_van" value="Acesso direto sem indireção. Relocação simples." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="160" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_des" value="Inflexível: processo cresce e não cabe; outro processo bloqueia espaço adjacente." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="160" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_lim" value="&lt;b style='color:#b85450'&gt;Inutilizável para multiprogramação real.&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="160" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_t" value="&lt;b&gt;2. Partições fixas&lt;/b&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 60)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="260" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_def" value="RAM dividida em N partições de tamanho pré-definido em boot; cada processo ocupa uma." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="260" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_prob" value="Permitir vários processos simultaneamente." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="260" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_van" value="Implementação simples (tabela fixa). Proteção fácil." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="260" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_des" value="&lt;b&gt;Fragmentação interna grave:&lt;/b&gt; processo menor que a partição desperdiça o resto." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="260" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r2_lim" value="Tamanho escolhido em boot — sem flexibilidade para cargas variadas." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="260" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_t" value="&lt;b&gt;3. Partições variáveis&lt;/b&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 60)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="360" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_def" value="Partições criadas/destruídas dinamicamente conforme processos chegam e saem." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="360" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_prob" value="Eliminar fragmentação interna das partições fixas." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="360" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_van" value="Cada processo recebe exatamente o que precisa." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="360" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_des" value="&lt;b&gt;Fragmentação externa:&lt;/b&gt; buracos pequenos entre processos que não cabem nada novo." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="360" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r3_lim" value="Exige compactação periódica (cara) ou first/best/worst-fit." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="360" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_t" value="&lt;b&gt;4. Swapping&lt;/b&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 60–70)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="460" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_def" value="Processos inteiros movidos entre RAM e disco quando há pressão de memória." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="460" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_prob" value="Rodar mais processos do que cabem em RAM." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="460" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_van" value="Aumenta número de processos suportados." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="460" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_des" value="Trocar processo inteiro custa caro (segundos); processo fica todo parado durante swap." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="460" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r4_lim" value="Sozinho não escala. Hoje, mecanismo combinado com paginação (swap por página)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="460" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_t" value="&lt;b style='font-size:13px'&gt;5. Paginação&lt;/b&gt;&lt;br&gt;&lt;span style='color:#82b366;font-size:11px;font-weight:bold'&gt;★ MODELO ATUAL ★&lt;/span&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 70+)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="560" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_def" value="Espaço virtual e físico divididos em blocos de tamanho fixo (páginas/frames). Qualquer página vai em qualquer frame, via tabela hierárquica." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="560" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_prob" value="Eliminar fragmentação externa. Permitir alocação não-contígua e memória virtual." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_van" value="Sem fragmentação externa. Permite memória virtual, swap por página, proteção fina, COW, sharing." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_des" value="Pequena fragmentação interna (última página). Overhead de tabela e TLB miss." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="560" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r5_lim" value="Exige MMU em hardware. Tabelas grandes precisam ser hierárquicas." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="560" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_t" value="&lt;b&gt;6. Segmentação&lt;/b&gt;&lt;br&gt;&lt;span style='color:#999;font-size:10px'&gt;(anos 70)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="660" width="180" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_def" value="Memória vista como conjunto de segmentos lógicos (código, dados, pilha) de tamanho variável, cada um com base+limite." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="660" width="260" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_prob" value="Refletir a estrutura lógica do programa no layout de memória." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="540" y="660" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_van" value="Compartilhamento e proteção naturais por segmento." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="780" y="660" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_des" value="Fragmentação externa entre segmentos. Lógica complexa." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="660" width="240" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="r6_lim" value="Abandonada como técnica única. Combinada com paginação em alguns x86 antigos." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="660" width="280" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="evolution_title" value="EVOLUÇÃO HISTÓRICA" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="800" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_50" value="&lt;b&gt;ANOS 50&lt;/b&gt;&lt;br&gt;mono-programação&lt;br&gt;alocação contígua" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_60" value="&lt;b&gt;ANOS 60&lt;/b&gt;&lt;br&gt;multi-programação&lt;br&gt;partições fixas/variáveis&lt;br&gt;swapping" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="360" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_70" value="&lt;b&gt;ANOS 70&lt;/b&gt;&lt;br&gt;memória virtual&lt;br&gt;segmentação + paginação&lt;br&gt;MMU em hardware" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_80" value="&lt;b&gt;ANOS 80+&lt;/b&gt;&lt;br&gt;paginação sob demanda&lt;br&gt;TLB, COW&lt;br&gt;modelo padrão&lt;br&gt;hoje" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="880" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_now" value="&lt;b&gt;ANOS 2000+&lt;/b&gt;&lt;br&gt;NUMA, huge pages&lt;br&gt;memory tiering&lt;br&gt;eBPF, persistent memory" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="840" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_a1" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="evo_50" target="evo_60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_a2" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="evo_60" target="evo_70">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_a3" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="evo_70" target="evo_80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="evo_a4" style="endArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="evo_80" target="evo_now">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="key_insight" value="&lt;b&gt;Padrão da evolução:&lt;/b&gt; cada técnica resolveu uma fragmentação ou rigidez da anterior. A paginação venceu porque trocou fragmentação externa (grave, exige compactação) por fragmentação interna (pequena, previsível, limitada à última página) — e abriu o caminho para memória virtual, COW, swap fino, mmap e tudo o que a Seção 9 mostra que o Linux faz hoje." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="950" width="1440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 4: Quadro Comparativo das Técnicas de Gerenciamento" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1100" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
