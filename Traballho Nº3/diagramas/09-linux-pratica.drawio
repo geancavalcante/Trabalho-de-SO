@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Linux na Prática" id="linux">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Como o Linux Gerencia Memória na Prática" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Zonas, alocadores, VMAs, page cache, parâmetros VM e ciclo de vida do processo" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="zones_title" value="1. ZONAS DE MEMÓRIA FÍSICA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_dma" value="&lt;b&gt;ZONE_DMA&lt;/b&gt;&lt;br&gt;0 – 16 MB&lt;br&gt;legacy DMA (24 bits)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="170" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_dma32" value="&lt;b&gt;ZONE_DMA32&lt;/b&gt;&lt;br&gt;16 MB – 4 GB&lt;br&gt;DMA 32 bits" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="275" y="170" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_normal" value="&lt;b&gt;ZONE_NORMAL&lt;/b&gt;&lt;br&gt;acima de 4 GB&lt;br&gt;uso geral" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="170" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_mov" value="&lt;b&gt;ZONE_MOVABLE&lt;/b&gt;&lt;br&gt;configurável&lt;br&gt;huge pages, hotplug" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="625" y="170" width="175" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_note" value="Em máquinas NUMA, cada nó tem seu conjunto de zonas. Kernel tenta alocar páginas no nó local. Observar: &lt;b&gt;/proc/zoneinfo&lt;/b&gt; e &lt;b&gt;numactl --hardware&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="235" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_title" value="2. ALOCADORES" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="130" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_subtitle" value="Para o kernel" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="170" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_buddy" value="&lt;b&gt;Buddy allocator&lt;/b&gt; — base de tudo, aloca em potências de 2 de páginas contíguas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="195" width="340" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_slab" value="&lt;b&gt;Slab / SLUB&lt;/b&gt; — objetos pequenos do kernel (inode, task_struct)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="235" width="340" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_kmalloc" value="&lt;b&gt;kmalloc&lt;/b&gt; — fisicamente contíguo, pequeno" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="275" width="340" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_vmalloc" value="&lt;b&gt;vmalloc&lt;/b&gt; — virtualmente contíguo, fisicamente espalhado" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="315" width="340" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_user_subtitle" value="Para processos (userspace)" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="170" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_brk" value="&lt;b&gt;brk / sbrk&lt;/b&gt; — move topo do heap (legacy)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="195" width="350" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_mmap" value="&lt;b&gt;mmap&lt;/b&gt; — cria nova VMA (arquivo ou anônima)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="235" width="350" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_munmap" value="&lt;b&gt;munmap&lt;/b&gt; — remove mapeamento" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="275" width="350" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="alloc_madvise" value="&lt;b&gt;madvise&lt;/b&gt; — dicas ao kernel (sequencial, descarte)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="315" width="350" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="vma_title" value="3. VMAs — Virtual Memory Areas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="305" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="vma_content" value="Cada processo tem uma lista de &lt;b&gt;vm_area_struct&lt;/b&gt; — uma para cada faixa contígua com mesmas permissões e mesmo backing.&lt;br&gt;&lt;br&gt;Quando ocorre page fault, kernel localiza a VMA que contém o endereço e despacha o handler.&lt;br&gt;&lt;br&gt;Cada linha de &lt;b&gt;/proc/&lt;pid&gt;/maps&lt;/b&gt; corresponde a uma VMA. Campos: vm_start, vm_end, vm_flags (R/W/X/SHARED), vm_file, vm_pgoff, vm_ops." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="345" width="700" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_title" value="4. PAGE CACHE — o coração do Linux" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="850" y="370" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_app" value="Aplicação" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="950" y="415" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_box" value="&lt;b&gt;PAGE CACHE&lt;/b&gt;&lt;br&gt;cache de páginas de arquivos em RAM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="950" y="490" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_disk" value="Disco / FS" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="950" y="600" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_a1" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;" edge="1" parent="1" source="cache_app" target="cache_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_a1_label" value="read/write/mmap" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="450" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_a2" style="endArrow=classic;startArrow=classic;html=1;strokeWidth=2;strokeColor=#666666;" edge="1" parent="1" source="cache_box" target="cache_disk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_a2_label" value="miss / flush" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="560" width="120" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cache_note" value="• Hit em cache: μs | Miss: ms&lt;br&gt;• mmap usa diretamente o page cache (sem cópia)&lt;br&gt;• Aparece como &lt;b&gt;buff/cache&lt;/b&gt; no free&lt;br&gt;• &lt;b&gt;Elástico:&lt;/b&gt; cede sob pressão de memória" style="text;html=1;align=left;verticalAlign=middle;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="430" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="params_title" value="5. /proc/sys/vm/ — Parâmetros do Subsistema VM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="510" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="param_table_h1" value="Parâmetro" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="100" y="550" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="param_table_h2" value="Função" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="320" y="550" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="param_table_h3" value="Default" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="740" y="550" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_swap" value="&lt;b&gt;swappiness&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="580" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_swap_d" value="tendência de mandar páginas anônimas para swap (0–100)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="580" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_swap_v" value="60" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="740" y="580" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_overc" value="&lt;b&gt;overcommit_memory&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="610" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_overc_d" value="0=heurística, 1=sempre permitir, 2=estrito" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="610" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_overc_v" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="740" y="610" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_dirty" value="&lt;b&gt;dirty_ratio&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="640" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_dirty_d" value="% de RAM até bloquear escritas (writeback síncrono)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="640" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_dirty_v" value="20" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="740" y="640" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_min" value="&lt;b&gt;min_free_kbytes&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="670" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_min_d" value="memória mínima livre que kswapd mantém" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="670" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_min_v" value="calc." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="740" y="670" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_panic" value="&lt;b&gt;panic_on_oom&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="700" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_panic_d" value="pânico do kernel ou só mata processo em OOM" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=left;verticalAlign=middle;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="320" y="700" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="p_panic_v" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="740" y="700" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fork_title" value="6. CICLO DE VIDA DO PROCESSO" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="850" y="660" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="fork_box" value="&lt;b&gt;fork()&lt;/b&gt;&lt;br&gt;1. Nova task_struct&lt;br&gt;2. Tabelas duplicadas, apontando&lt;br&gt;&amp;nbsp;&amp;nbsp; aos &lt;b&gt;mesmos frames físicos&lt;/b&gt;&lt;br&gt;3. Todas as páginas marcadas R-O&lt;br&gt;4. COW: na 1ª escrita, kernel&lt;br&gt;&amp;nbsp;&amp;nbsp; duplica AQUELA página" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="850" y="700" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="exec_box" value="&lt;b&gt;exec(&quot;/path/programa&quot;)&lt;/b&gt;&lt;br&gt;1. VMAs construídas do ELF&lt;br&gt;2. VMAs antigas liberadas&lt;br&gt;3. Espaço virtual zerado&lt;br&gt;4. NENHUMA página carregada&lt;br&gt;&amp;nbsp;&amp;nbsp; (demand paging)&lt;br&gt;5. 1º acesso ao .text → page fault,&lt;br&gt;&amp;nbsp;&amp;nbsp; kernel lê do ELF" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="700" width="340" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="exit_box" value="&lt;b&gt;exit()&lt;/b&gt; — Quando o processo termina&lt;br&gt;1. Kernel percorre as VMAs e desfaz cada mapeamento&lt;br&gt;2. Páginas &lt;b&gt;anônimas&lt;/b&gt; (heap, stack) → buddy allocator&lt;br&gt;3. Páginas de arquivo (libs .so, .text) → page cache (outros processos podem usar)&lt;br&gt;4. Tabelas de páginas liberadas | task_struct liberada via slab" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2e0;strokeColor=#d79b00;fontSize=10;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="850" y="850" width="690" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="oom_title" value="7. OOM KILLER" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;strokeWidth=2;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="100" y="760" width="700" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="oom_content" value="Quando RAM &lt;b&gt;e swap&lt;/b&gt; esgotam, kernel não consegue mais entregar páginas. Em vez de travar, dispara o &lt;b&gt;OOM Killer&lt;/b&gt;:&lt;br&gt;&lt;br&gt;1. Cada processo tem um score em &lt;b&gt;/proc/&lt;pid&gt;/oom_score&lt;/b&gt; (baseado em uso, idade, prioridade)&lt;br&gt;2. Score ajustável por &lt;b&gt;/proc/&lt;pid&gt;/oom_score_adj&lt;/b&gt; (-1000 = imune)&lt;br&gt;3. Processo de maior score recebe &lt;b&gt;SIGKILL&lt;/b&gt;&lt;br&gt;4. Logado em &lt;b&gt;dmesg&lt;/b&gt;: &lt;tt&gt;Out of memory: Killed process&lt;/tt&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="800" width="700" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 6: Bloco Linux na Prática" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="990" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

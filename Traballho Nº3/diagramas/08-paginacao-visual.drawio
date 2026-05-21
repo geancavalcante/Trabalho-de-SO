@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Paginação Visual" id="paginacao">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Paginação e Memória Virtual — Visão Conceitual" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Páginas (virtuais) ↔ Quadros/Frames (físicos) com mapeamento arbitrário via tabela de páginas" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="virt_title" value="MEMÓRIA VIRTUAL DO PROCESSO&lt;br&gt;(contígua, lógica)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_title" value="MEMÓRIA FÍSICA (RAM)&lt;br&gt;(frames espalhados)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="120" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage0" value="Página 0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="170" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage1" value="Página 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="215" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage2" value="Página 2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="260" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage3" value="Página 3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="305" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage4" value="Página 4 (em disco)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="160" y="350" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vpage5" value="Página 5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="160" y="395" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_title" value="TABELA DE PÁGINAS&lt;br&gt;&lt;span style='font-size:11px;font-weight:normal'&gt;(hierárquica, mantida pelo kernel)&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="540" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="500" y="170" width="540" height="270" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_pg" value="Página Virt." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="500" y="170" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_frame" value="Frame" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="620" y="170" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_p" value="P" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="720" y="170" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_rw" value="R/W" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="760" y="170" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_us" value="U/S" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="810" y="170" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_a" value="A" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="860" y="170" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_d" value="D" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="900" y="170" width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_h_nx" value="NX" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9673a6;strokeColor=#9673a6;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="940" y="170" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_f" value="17" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_p" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_rw" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="200" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_us" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="200" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_a" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_d" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="200" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r0_nx" value="0 (.text)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="940" y="200" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="240" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_f" value="3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="240" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_p" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="240" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_rw" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="240" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_us" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="240" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_a" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="240" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_d" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="240" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r1_nx" value="1 (data)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="940" y="240" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2" value="2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="280" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_f" value="42" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="280" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_p" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="280" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_rw" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="280" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_us" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="280" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_a" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="280" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_d" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="280" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r2_nx" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="940" y="280" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3" value="3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_f" value="20" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="320" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_p" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="320" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_rw" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="320" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_us" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="320" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_a" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="320" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_d" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="320" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r3_nx" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="940" y="320" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r4" value="4" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="360" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r4_f" value="(disco)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="360" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r4_p" value="&lt;b&gt;0&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="720" y="360" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r4_rest" value="--- página em swap ---" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="360" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5" value="5" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="500" y="400" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_f" value="99" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="620" y="400" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_p" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="720" y="400" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_rw" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="760" y="400" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_us" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="810" y="400" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_a" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="860" y="400" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_d" value="0" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="400" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pte_r5_nx" value="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#9673a6;fontSize=9;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="940" y="400" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="fphys_box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#6c8ebf;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="170" width="280" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f3" value="Frame 3 (Página 1)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="170" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f17" value="Frame 17 (Página 0)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="210" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f20" value="Frame 20 (Página 3)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="250" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f42" value="Frame 42 (Página 2)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="290" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f50" value="Frame 50 (outro processo)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="330" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f80" value="Frame 80 (livre)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="370" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="phys_f99" value="Frame 99 (Página 5)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="410" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="swap_disk" value="DISCO — área de swap&lt;br&gt;&lt;br&gt;Página 4 está aqui" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=center;verticalAlign=middle;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="490" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="map0" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage0" target="pte_r0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="map1" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage1" target="pte_r1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="map2" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage2" target="pte_r2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="map3" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage3" target="pte_r3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="map4" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#b85450;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage4" target="pte_r4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="map5" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#82b366;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="vpage5" target="pte_r5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys0" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r0" target="phys_f17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys1" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r1_f" target="phys_f3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys2" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r2_f" target="phys_f42">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys3" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r3_f" target="phys_f20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys4_disk" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#666666;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r4_f" target="swap_disk">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="phys5" style="endArrow=classic;html=1;strokeWidth=1.5;strokeColor=#6c8ebf;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="pte_r5_f" target="phys_f99">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cr3_arrow" value="&lt;b&gt;CR3 (registrador da CPU)&lt;/b&gt;&lt;br&gt;aponta para a raiz da tabela&lt;br&gt;(trocado em cada context switch)" style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="500" y="450" width="540" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fault_panel" value="&lt;b&gt;Acesso à Página 4 → PAGE FAULT&lt;/b&gt;&lt;br&gt;&lt;br&gt;MMU verifica PTE: P=0 → exceção. Kernel detecta tipo:&lt;br&gt;• major fault: traz a página da área de swap para um frame livre&lt;br&gt;• atualiza PTE (P=1, frame correto)&lt;br&gt;• invalida TLB&lt;br&gt;• retoma instrução (que agora terá sucesso)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="620" width="700" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="hierarchy_panel" value="&lt;b&gt;TABELA HIERÁRQUICA (x86-64, 4 níveis)&lt;/b&gt;&lt;br&gt;&lt;br&gt;Endereço virtual de 48 bits dividido em 4 índices de 9 bits + offset de 12 bits.&lt;br&gt;&lt;br&gt;CR3 → &lt;b&gt;PGD&lt;/b&gt; → &lt;b&gt;PUD&lt;/b&gt; → &lt;b&gt;PMD&lt;/b&gt; → &lt;b&gt;PTE&lt;/b&gt; → Frame + Offset&lt;br&gt;&lt;br&gt;Cada nível: 512 entradas (8 bytes × 512 = 4 KiB = uma página).&lt;br&gt;Tabelas vazias NÃO são criadas — economiza muito espaço.&lt;br&gt;CPUs novas têm 5 níveis (PML5) cobrindo 128 PiB." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="620" width="700" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="replacement_title" value="SUBSTITUIÇÃO DE PÁGINA (quando RAM enche)" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="800" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_fifo" value="&lt;b&gt;FIFO&lt;/b&gt;&lt;br&gt;mais antiga sai&lt;br&gt;&lt;span style='color:#b85450'&gt;ruim&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_lru" value="&lt;b&gt;LRU&lt;/b&gt;&lt;br&gt;menos recentemente usada&lt;br&gt;&lt;span style='color:#82b366'&gt;ótimo&lt;/span&gt; • impl. cara" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_clock" value="&lt;b&gt;Clock / LRU aprox&lt;/b&gt;&lt;br&gt;bit A + ponteiro circular&lt;br&gt;&lt;span style='color:#82b366'&gt;usado na prática&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="580" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_lru_linux" value="&lt;b&gt;Linux: 2 listas LRU&lt;/b&gt;&lt;br&gt;active + inactive&lt;br&gt;&lt;span style='color:#82b366'&gt;kswapd faz reclaim&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="820" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_ws" value="&lt;b&gt;Working Set&lt;/b&gt;&lt;br&gt;páginas usadas no intervalo&lt;br&gt;&lt;span style='color:#999'&gt;teórico&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_lfu" value="&lt;b&gt;LFU&lt;/b&gt;&lt;br&gt;menos frequente&lt;br&gt;&lt;span style='color:#b85450'&gt;sofre mudança de fase&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="840" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="thrashing_panel" value="&lt;b style='color:#b85450'&gt;THRASHING — o ponto de colapso&lt;/b&gt;&lt;br&gt;Quando o working set total dos processos excede a RAM, o kernel:&lt;br&gt;1) manda página A para swap | 2) processo precisa de A → traz de volta | 3) para trazer, manda B para swap | 4) processo precisa de B → traz...&lt;br&gt;&lt;b&gt;Resultado:&lt;/b&gt; sistema passa mais tempo paginando do que executando. CPU baixa, disco 100%, processos congelados. &lt;b&gt;Solução:&lt;/b&gt; matar processos (OOM killer) ou adicionar RAM." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="930" width="1420" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Seção 8: Paginação e Memória Virtual" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1080" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

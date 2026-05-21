@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Fragmentação" id="fragmentacao">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Fragmentação — Interna vs Externa" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Todo desperdício de memória causado como efeito colateral das estratégias de alocação" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="left_title" value="FRAGMENTAÇÃO INTERNA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="700" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="right_title" value="FRAGMENTAÇÃO EXTERNA" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="854" y="130" width="700" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="int_def" value="&lt;b&gt;Desperdício DENTRO de um bloco já alocado&lt;/b&gt;&lt;br&gt;&lt;br&gt;O alocador entregou mais espaço do que o processo realmente usa. O resto fica reservado mas inativo." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="200" width="700" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_def" value="&lt;b&gt;Espaços livres pequenos e ESPALHADOS entre blocos alocados&lt;/b&gt;&lt;br&gt;&lt;br&gt;Memória total livre é grande, mas não há um bloco contíguo grande o suficiente para uma alocação grande." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+          <mxGeometry x="854" y="200" width="700" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="int_example_title" value="Exemplo: pedido de 13 KB em página de 16 KB" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="int_page_frame" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="180" y="340" width="540" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="int_used" value="USADO (13 KB)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="180" y="340" width="439" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="int_waste" value="DESPER-&lt;br&gt;DÍCIO&lt;br&gt;3 KB" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="619" y="340" width="101" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="int_caption" value="Página de 16 KB — alocada inteira para o processo. Os 3 KB não-utilizados pertencem a ele, mas não podem ser dados a outro processo." style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="100" y="430" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_example_title" value="Exemplo: 100 MB livres, mas pedido de 40 MB falha" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="854" y="300" width="700" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_a" value="A&lt;br&gt;30M" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="900" y="340" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_free1" value="livre&lt;br&gt;20M" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;dashed=1;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="340" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_c" value="C&lt;br&gt;25M" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="340" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_free2" value="livre&lt;br&gt;25M" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;dashed=1;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="340" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ext_caption" value="Livre total: 45 MB | Maior bloco contíguo: 25 MB | Pedido de 40 MB FALHA." style="text;html=1;align=center;verticalAlign=middle;fontSize=11;fontStyle=2;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="854" y="430" width="700" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comparison_header" value="COMPARAÇÃO LADO A LADO" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="490" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row0_a" value="Aspecto" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="100" y="525" width="240" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row0_b" value="Interna" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3a36;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="340" y="525" width="620" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row0_c" value="Externa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b85450;strokeColor=#8a3a36;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="960" y="525" width="620" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row1_a" value="Onde" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="560" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row1_b" value="Dentro de blocos já alocados" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="560" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row1_c" value="Entre blocos livres (espalhados pela memória)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="960" y="560" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row2_a" value="Causa" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="600" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row2_b" value="Alocador entrega mais espaço que o pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="600" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row2_c" value="Alocação/liberação sucessivas deixam buracos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="960" y="600" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row3_a" value="Onde aparece" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="640" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row3_b" value="Partições fixas, paginação (última pág), alocadores com size classes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="640" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row3_c" value="Partições variáveis, segmentação, vmalloc, huge pages, DMA contíguo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="960" y="640" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row4_a" value="Mitigação" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="680" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row4_b" value="Páginas menores; alocadores que ajustam ao pedido" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="680" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row4_c" value="Paginação (elimina req. de contiguidade) + compactação" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="960" y="680" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row5_a" value="Custo da mitigação" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="720" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row5_b" value="Mais overhead de tabela (páginas menores → mais entradas)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="340" y="720" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="comp_row5_c" value="Compactação é caríssima; paginação exige MMU" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="960" y="720" width="620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="conclusion" value="&lt;b&gt;A paginação não elimina fragmentação. Ela troca fragmentação externa (grave, imprevisível, exige compactação) por fragmentação interna (pequena, previsível, limitada à última página).&lt;/b&gt;&lt;br&gt;&lt;br&gt;Esse trade-off é uma vitória clara: o custo da paginação cresce devagar (overhead da tabela) enquanto o benefício cresce rápido (memória virtual, swap por página, COW, sharing)." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;align=center;verticalAlign=middle;spacingLeft=20;spacingRight=20;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="790" width="1480" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="algos_title" value="ALGORITMOS DE ALOCAÇÃO CLÁSSICOS" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="940" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_ff" value="&lt;b&gt;First-fit&lt;/b&gt;&lt;br&gt;Primeiro buraco que serve&lt;br&gt;&lt;span style='color:#82b366'&gt;Rápido&lt;/span&gt; • &lt;span style='color:#b85450'&gt;fragmenta o início&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="100" y="980" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_bf" value="&lt;b&gt;Best-fit&lt;/b&gt;&lt;br&gt;Menor buraco que serve&lt;br&gt;&lt;span style='color:#b85450'&gt;Deixa buracos minúsculos inúteis&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="395" y="980" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_wf" value="&lt;b&gt;Worst-fit&lt;/b&gt;&lt;br&gt;Maior buraco, divide&lt;br&gt;Em teoria evita pequenos • &lt;span style='color:#b85450'&gt;na prática, ruim&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#999999;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="690" y="980" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_buddy" value="&lt;b&gt;Buddy system&lt;/b&gt;&lt;br&gt;Potências de 2; merge de irmãos&lt;br&gt;&lt;span style='color:#82b366'&gt;Linux usa para frames físicos&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="985" y="980" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="alg_slab" value="&lt;b&gt;Slab&lt;/b&gt;&lt;br&gt;Pools de tamanho fixo&lt;br&gt;&lt;span style='color:#82b366'&gt;Linux usa para objetos do kernel&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1280" y="980" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Seção 7: Fragmentação" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1080" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
