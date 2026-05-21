@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Conclusão Crítica" id="conclusao">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Conclusão Crítica — O Modelo Convergente dos Sistemas Operacionais Modernos" style="text;html=1;align=center;verticalAlign=middle;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Qual modelo de gerenciamento de memória melhor representa os SOs modernos e por quê?" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="answer_box" value="&lt;b style='font-size:16px'&gt;A RESPOSTA&lt;/b&gt;&lt;br&gt;&lt;br&gt;O modelo dominante é a &lt;b&gt;paginação por demanda com memória virtual, proteção por hardware, gerenciamento pelo kernel, uso intenso de page cache e observabilidade rica via interfaces do sistema&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Esse modelo não é uma escolha entre opções equivalentes — é o resultado convergente de 60 anos de evolução em que cada técnica resolveu o problema da anterior, até sobrar um conjunto mínimo, robusto e adaptável." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;align=left;verticalAlign=middle;spacingLeft=20;spacingRight=20;strokeWidth=3;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="1460" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_title" value="OS 6 COMPONENTES INTERDEPENDENTES DO MODELO" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="300" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_vm" value="&lt;b style='font-size:14px'&gt;1. MEMÓRIA VIRTUAL&lt;/b&gt;&lt;br&gt;&lt;br&gt;Processo nunca toca endereço físico. Toda referência é virtual, traduzida pela MMU.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; isolamento; espaço uniforme por processo; memória maior que RAM via swap; ASLR; sharing eficiente." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="340" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_pag" value="&lt;b style='font-size:14px'&gt;2. PAGINAÇÃO&lt;/b&gt;&lt;br&gt;&lt;br&gt;Espaço dividido em páginas de tamanho fixo (4 KiB). Qualquer página vai em qualquer frame.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; sem fragmentação externa; granularidade fina para swap; COW prático; permissões por página." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="340" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_mmu" value="&lt;b style='font-size:14px'&gt;3. PROTEÇÃO POR HARDWARE&lt;/b&gt;&lt;br&gt;&lt;br&gt;MMU verifica bits da PTE em paralelo com a tradução. Custo zero quando tudo OK, exceção quando viola.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; inviolabilidade; modos ring 0/3; mecanismo claro de page fault." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="340" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_kernel" value="&lt;b style='font-size:14px'&gt;4. GERENCIAMENTO PELO KERNEL&lt;/b&gt;&lt;br&gt;&lt;br&gt;Única entidade que vê o todo. Decide quem cresce, quem encolhe, quem vai pra swap, quem é morto.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; visão global; políticas únicas; mediação de syscalls; atendimento de faults." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="540" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_cache" value="&lt;b style='font-size:14px'&gt;5. PAGE CACHE&lt;/b&gt;&lt;br&gt;&lt;br&gt;RAM ociosa transparente como cache do sistema de arquivos. Cede sob pressão.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; read elástico; write deferred; unifica read() e mmap(); compartilhado entre processos." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="600" y="540" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="hex_obs" value="&lt;b style='font-size:14px'&gt;6. OBSERVABILIDADE&lt;/b&gt;&lt;br&gt;&lt;br&gt;Não é decoração — é parte essencial do design. /proc, /sys, free, vmstat, eBPF.&lt;br&gt;&lt;br&gt;&lt;b&gt;Entrega:&lt;/b&gt; diagnóstico imediato; granularidade certa; padronização; extensibilidade." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=12;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="540" width="460" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="deps_title" value="OS 6 COMPONENTES FORMAM UMA ARQUITETURA, NÃO 6 OPÇÕES SOLTAS" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="730" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dep_chain" value="&lt;b&gt;Memória Virtual&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;requer&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;→&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;Paginação&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;depende de&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;→&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;MMU/HW&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;atendida por&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;→&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;Kernel&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;alavanca&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;→&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;Page Cache&lt;/b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;exposta por&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;→&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;Observabilidade&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="100" y="770" width="1460" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="deps_warning" value="&lt;b&gt;Retirar qualquer um quebra os outros.&lt;/b&gt; A memória virtual sem paginação não escala. A paginação sem MMU não tem proteção. A MMU sem kernel não tem como ser configurada. O kernel sem page cache desperdiça RAM. O page cache sem observabilidade vira caixa preta. O modelo é uma arquitetura, não uma coleção de features.&lt;br&gt;&lt;br&gt;&lt;b&gt;Os 4 requisitos inegociáveis que esse modelo entrega simultaneamente:&lt;/b&gt;&lt;br&gt;&lt;b style='color:#82b366'&gt;✓ ISOLAMENTO&lt;/b&gt; entre processos&lt;br&gt;&lt;b style='color:#82b366'&gt;✓ EFICIÊNCIA&lt;/b&gt; sob pressão de RAM&lt;br&gt;&lt;b style='color:#82b366'&gt;✓ FLEXIBILIDADE&lt;/b&gt; de layout (heap dinâmico, mmap, COW)&lt;br&gt;&lt;b style='color:#82b366'&gt;✓ CAPACIDADE DE DIAGNÓSTICO&lt;/b&gt; granular" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="820" width="900" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="future_panel" value="&lt;b&gt;O QUE PODE MUDAR NO FUTURO&lt;/b&gt;&lt;br&gt;&lt;br&gt;• &lt;b&gt;Persistent memory&lt;/b&gt; (Optane, CXL) → distinção RAM/disco esmaece, DAX e memory tiering&lt;br&gt;&lt;br&gt;• &lt;b&gt;Memória em cluster&lt;/b&gt; (CXL.mem) → frames físicos em outro chassi&lt;br&gt;&lt;br&gt;• &lt;b&gt;eBPF para gerência&lt;/b&gt; → políticas customizadas em userspace&lt;br&gt;&lt;br&gt;• &lt;b&gt;Capability-based memory&lt;/b&gt; (CHERI) → bits de permissão viram capabilities tipadas&lt;br&gt;&lt;br&gt;&lt;b&gt;Mas o esqueleto&lt;/b&gt; — virtual, paginado, protegido em HW, gerenciado por kernel — não tem alternativa viável." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=12;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="820" width="520" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="final_box" value="O modelo que melhor representa sistemas operacionais modernos é &lt;b&gt;memória virtual paginada com proteção por MMU, gerenciada pelo kernel, otimizada por page cache e instrumentada por interfaces do sistema operacional&lt;/b&gt;. Ele venceu porque foi o único que conseguiu, simultaneamente, oferecer isolamento entre processos, eficiência sob pressão de RAM, flexibilidade de layout e capacidade de diagnóstico — quatro requisitos que sistemas modernos não podem dispensar." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;align=center;verticalAlign=middle;spacingLeft=30;spacingRight=30;strokeWidth=3;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1040" width="1460" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 9: Conclusão Crítica" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1150" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="claude-code" version="22.1.0">
+  <diagram name="Observabilidade" id="obs">
+    <mxGraphModel dx="1422" dy="757" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Observabilidade e Monitoramento de Memória no Linux" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77" y="30" width="1500" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Como validar o uso da memória — cada ferramenta mostra uma faceta diferente" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="75" width="1500" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="free_box" value="&lt;b style='font-size:14px'&gt;free&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; sistema inteiro&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; RAM total/usada/livre, buff/cache, swap, &lt;b&gt;available&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; resposta rápida para &quot;quanto de RAM o sistema tá usando?&quot;&lt;br&gt;&lt;br&gt;&lt;b style='color:#b85450'&gt;Armadilha:&lt;/b&gt; olhar &quot;free&quot; baixo e achar que está sem memória. O número que importa é &lt;b&gt;available&lt;/b&gt;." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="130" width="350" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="top_box" value="&lt;b style='font-size:14px'&gt;top / htop&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; processos&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; lista interativa: VIRT, RES, SHR, %MEM&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; &quot;quem está consumindo memória?&quot;&lt;br&gt;&lt;br&gt;&lt;b&gt;Tecla M&lt;/b&gt; no top ordena por %MEM. htop tem cores e árvore.&lt;br&gt;&lt;br&gt;&lt;b style='color:#b85450'&gt;Armadilha:&lt;/b&gt; somar RES de todos os processos passa do total da RAM, pois libs compartilhadas são contadas N vezes." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="500" y="130" width="350" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="vmstat_box" value="&lt;b style='font-size:14px'&gt;vmstat&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; sistema (séries temporais)&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; paginação (si/so), swap, I/O, CPU em intervalos&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; &quot;há paginação anormal? swap-in/out?&quot;&lt;br&gt;&lt;br&gt;Colunas-chave: &lt;b&gt;si&lt;/b&gt; (swap-in), &lt;b&gt;so&lt;/b&gt; (swap-out), &lt;b&gt;wa&lt;/b&gt; (I/O wait CPU)&lt;br&gt;&lt;br&gt;&lt;b style='color:#b85450'&gt;Alerta:&lt;/b&gt; si/so &gt; 0 sustentado + wa alto = &lt;b&gt;thrashing&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="900" y="130" width="350" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="meminfo_box" value="&lt;b style='font-size:14px'&gt;/proc/meminfo&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; sistema (painel detalhado)&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; ~50 contadores: Cached, AnonPages, Mapped, Slab, Dirty, Writeback, SwapCached, etc.&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; diagnóstico fino, separar tipos de uso&lt;br&gt;&lt;br&gt;&lt;b&gt;Cuidado:&lt;/b&gt; muitos campos exigem leitura cuidadosa. Não somar tudo pra obter total — métricas se sobrepõem." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="130" width="260" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="maps_box" value="&lt;b style='font-size:14px'&gt;/proc/&lt;pid&gt;/maps&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; um processo específico&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; cada VMA — faixa, permissões, arquivo, offset, inode&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; &quot;o que está mapeado no espaço desse processo?&quot;&lt;br&gt;&lt;br&gt;Caminhos especiais: &lt;b&gt;[heap]&lt;/b&gt;, &lt;b&gt;[stack]&lt;/b&gt;, &lt;b&gt;[vdso]&lt;/b&gt;, &lt;b&gt;[vvar]&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;span style='font-family:Courier New;font-size:9px'&gt;Ex:&amp;nbsp;00400000-00452000 r-xp 00000000 fd:00 12345 /usr/bin/cat&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="400" width="450" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="smaps_box" value="&lt;b style='font-size:14px'&gt;/proc/&lt;pid&gt;/smaps&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;Escopo:&lt;/b&gt; um processo específico (detalhado)&lt;br&gt;&lt;br&gt;&lt;b&gt;Mostra:&lt;/b&gt; maps + Size, &lt;b&gt;RSS&lt;/b&gt;, &lt;b&gt;PSS&lt;/b&gt;, Shared/Private Clean/Dirty, &lt;b&gt;Swap&lt;/b&gt; por VMA&lt;br&gt;&lt;br&gt;&lt;b&gt;Quando usar:&lt;/b&gt; &quot;quanto desse mapeamento está realmente em RAM?&quot;&lt;br&gt;&lt;br&gt;&lt;b style='color:#82b366'&gt;PSS é a métrica mais honesta:&lt;/b&gt; cada página compartilhada é dividida entre os N processos que a usam." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="400" width="450" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="other_box" value="&lt;b style='font-size:14px'&gt;Outras ferramentas úteis&lt;/b&gt;&lt;hr style='margin:4px 0'&gt;&lt;b&gt;pmap &lt;pid&gt;&lt;/b&gt; — versão amigável do maps&lt;br&gt;&lt;br&gt;&lt;b&gt;pidstat -r&lt;/b&gt; — page faults por processo (séries)&lt;br&gt;&lt;br&gt;&lt;b&gt;sar -B&lt;/b&gt; — histórico de paginação&lt;br&gt;&lt;b&gt;sar -r&lt;/b&gt; — histórico de uso de RAM&lt;br&gt;&lt;br&gt;&lt;b&gt;perf stat -e dTLB-load-misses&lt;/b&gt; — TLB misses&lt;br&gt;&lt;br&gt;&lt;b&gt;bpftrace, eBPF&lt;/b&gt; — probes customizados&lt;br&gt;&lt;br&gt;&lt;b&gt;dmesg&lt;/b&gt; — eventos do kernel (incluindo OOM kill)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="400" width="460" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="recipes_title" value="RECEITAS PRÁTICAS DE DIAGNÓSTICO" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontStyle=1;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="77" y="670" width="1500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="recipe_h1" value="Pergunta / Sintoma" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="100" y="700" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="recipe_h2" value="Comando" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#666666;strokeColor=#333333;fontSize=11;fontStyle=1;align=center;verticalAlign=middle;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="600" y="700" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec1q" value="Quanto de memória sobra?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="730" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec1c" value="free -h     (olhe a coluna available)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="730" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec2q" value="Quem tá comendo memória?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="760" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec2c" value="top   (tecla M para ordenar por %MEM)     ou     htop" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="760" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec3q" value="Esse processo, o que tem mapeado?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="790" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec3c" value="cat /proc/&lt;pid&gt;/maps     ou     pmap &lt;pid&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="790" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec4q" value="Quanto esse processo usa de verdade (sem dupla contagem)?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="820" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec4c" value="grep Pss /proc/&lt;pid&gt;/smaps | awk '{sum+=$2} END {print sum, &quot;kB&quot;}'" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="820" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec5q" value="Sistema lento, será swap?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="850" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec5c" value="vmstat 1     (observe si e so)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="850" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec6q" value="Quem está paginando muito?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="880" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec6c" value="pidstat -r 1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="880" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec7q" value="Histórico de paginação ao longo do tempo" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="910" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec7c" value="sar -B     (page faults)         sar -r     (uso de RAM)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="910" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec8q" value="OOM matou alguém?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="100" y="940" width="500" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rec8c" value="dmesg | grep -i &quot;out of memory&quot;     ou     journalctl -k | grep oom" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#999999;fontSize=11;align=left;verticalAlign=middle;spacingLeft=8;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="600" y="940" width="980" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="warning_panel" value="&lt;b&gt;ARMADILHAS COMUNS DE INTERPRETAÇÃO&lt;/b&gt;&lt;br&gt;• &lt;b&gt;&quot;Memória usada está em 90%&quot;&lt;/b&gt; — page cache conta como used. O número que importa é &lt;b&gt;available&lt;/b&gt;&lt;br&gt;• &lt;b&gt;&quot;Esse processo consome 500 MB (RES)&quot;&lt;/b&gt; — inclui libs compartilhadas. Use &lt;b&gt;PSS&lt;/b&gt; em smaps&lt;br&gt;• &lt;b&gt;&quot;Tem swap usado, sistema está paginando&quot;&lt;/b&gt; — pode ser swap histórico. Olhe &lt;b&gt;si/so&lt;/b&gt; atual&lt;br&gt;• &lt;b&gt;&quot;Vou liberar cache com drop_caches&quot;&lt;/b&gt; — DESACELERA: próximas leituras irão a disco&lt;br&gt;• &lt;b&gt;&quot;OOM matou o errado&quot;&lt;/b&gt; — escolhe pelo oom_score, ajustável por oom_score_adj" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="990" width="1460" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="footer" value="Trabalho Nº3 — System Design da Memória — Artefato 7: Bloco de Observabilidade" style="text;html=1;align=center;verticalAlign=middle;fontSize=10;fontStyle=2;fontColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="77" y="1140" width="1500" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
